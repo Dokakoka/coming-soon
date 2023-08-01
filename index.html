@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon!</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <style>
+        body {
+            height: 100vh;
+        }
+        .counter {
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 30px;
+        }
+        .counter-div {
+            font-size: 20px;
+        }
+        @media (max-width: 767px) {
+            img {
+                width: 100%;
+                height: 110%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            img {
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="h-100 d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <img src="assets/27282.jpg" alt="">
+                </div>
+                <div class="col-12 mt-5">
+                    <div class="text-center counter-div">
+                        <span class="counter" id="days"></span> :
+                        <span class="counter" id="hours"></span> :
+                        <span class="counter" id="minutes"></span> :
+                        <span class="counter" id="seconds"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function getTargetDate() {
+      const currentDate = new Date();
+      const targetDate = new Date(currentDate.getTime() + 14 * 24 * 60 * 60 * 1000);
+      targetDate.setHours(23, 59, 59, 999);
+      return targetDate;
+    }
+
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+    
+    function formatNumberWithLeadingZero(number) {
+        return number.toString().padStart(2, '0');
+    }
+
+    function updateCountdown() {
+      const targetDate = getTargetDate();
+      const currentDate = new Date();
+      const timeDifference = targetDate.getTime() - currentDate.getTime();
+
+        if (timeDifference > 0) {
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            daysElement.innerHTML = formatNumberWithLeadingZero(days);
+            hoursElement.innerHTML = formatNumberWithLeadingZero(hours);
+            minutesElement.innerHTML = formatNumberWithLeadingZero(minutes);
+            secondsElement.innerHTML = formatNumberWithLeadingZero(seconds);
+        }
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+  </script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+</html>
