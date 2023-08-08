@@ -12,24 +12,34 @@
         }
         .counter {
             border: 2px solid black;
+            color: #FF4153;
             border-radius: 10px;
             padding: 15px;
             font-size: 30px;
-            box-shadow: 2px 2px 2px black;
+            /* box-shadow: 2px 2px 2px black; */
+        }
+        .dot {
+            color: black;
         }
         .counter-div {
             font-size: 20px;
         }
         @media (max-width: 767px) {
-            img {
+            .banner {
                 width: 100%;
                 height: 110%;
+            }
+            .logo {
+                width: 20%;
             }
         }
 
         @media (min-width: 768px) {
-            img {
+            .banner {
                 width: 60%;
+            }
+            .logo {
+                width: 15%;
             }
         }
     </style>
@@ -38,14 +48,17 @@
     <div class="h-100 d-flex justify-content-center align-items-center">
         <div class="container">
             <div class="row">
+                <div class="col-12 d-flex align-items-center justify-content-center mb-3">
+                    <img class="logo rounded-circle" src="assets/pp facebook .jpg" alt="">
+                </div>
                 <div class="col-12 d-flex align-items-center justify-content-center">
-                    <img src="assets/27282.jpg" alt="">
+                    <img class="banner" src="assets/banner-.jpg" alt="">
                 </div>
                 <div class="col-12 mt-5">
                     <div class="text-center counter-div">
-                        <span class="counter" id="days"></span> :
-                        <span class="counter" id="hours"></span> :
-                        <span class="counter" id="minutes"></span> :
+                        <span class="counter" id="days"></span> <span class="dot">:</span>
+                        <span class="counter" id="hours"></span> <span class="dot">:</span>
+                        <span class="counter" id="minutes"></span> <span class="dot">:</span>
                         <span class="counter" id="seconds"></span>
                     </div>
                 </div>
